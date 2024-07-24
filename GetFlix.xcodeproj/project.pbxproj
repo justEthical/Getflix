@@ -16,6 +16,8 @@
 		04AF94C62C515B25008D8F3D /* GetFlixTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AF94C52C515B25008D8F3D /* GetFlixTests.swift */; };
 		04AF94D02C515B25008D8F3D /* GetFlixUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AF94CF2C515B25008D8F3D /* GetFlixUITests.swift */; };
 		04AF94D22C515B25008D8F3D /* GetFlixUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AF94D12C515B25008D8F3D /* GetFlixUITestsLaunchTests.swift */; };
+		04AF94E52C515BD6008D8F3D /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 04AF94E42C515BD6008D8F3D /* SDWebImage */; };
+		04AF94E72C515BD6008D8F3D /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 04AF94E62C515BD6008D8F3D /* SDWebImageMapKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +58,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04AF94E72C515BD6008D8F3D /* SDWebImageMapKit in Frameworks */,
+				04AF94E52C515BD6008D8F3D /* SDWebImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,6 +83,11 @@
 		04AF94A22C515B23008D8F3D = {
 			isa = PBXGroup;
 			children = (
+				04AF94E22C515B8B008D8F3D /* Cell */,
+				04AF94E12C515B7E008D8F3D /* Network */,
+				04AF94E02C515B74008D8F3D /* View */,
+				04AF94DF2C515B66008D8F3D /* ViewControllers */,
+				04AF94DE2C515B4A008D8F3D /* Models */,
 				04AF94AD2C515B23008D8F3D /* GetFlix */,
 				04AF94C42C515B25008D8F3D /* GetFlixTests */,
 				04AF94CE2C515B25008D8F3D /* GetFlixUITests */,
@@ -101,8 +110,6 @@
 			children = (
 				04AF94AE2C515B23008D8F3D /* AppDelegate.swift */,
 				04AF94B02C515B23008D8F3D /* SceneDelegate.swift */,
-				04AF94B22C515B23008D8F3D /* ViewController.swift */,
-				04AF94B42C515B23008D8F3D /* Main.storyboard */,
 				04AF94B72C515B25008D8F3D /* Assets.xcassets */,
 				04AF94B92C515B25008D8F3D /* LaunchScreen.storyboard */,
 				04AF94BC2C515B25008D8F3D /* Info.plist */,
@@ -127,6 +134,43 @@
 			path = GetFlixUITests;
 			sourceTree = "<group>";
 		};
+		04AF94DE2C515B4A008D8F3D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		04AF94DF2C515B66008D8F3D /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				04AF94B22C515B23008D8F3D /* ViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		04AF94E02C515B74008D8F3D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				04AF94B42C515B23008D8F3D /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		04AF94E12C515B7E008D8F3D /* Network */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		04AF94E22C515B8B008D8F3D /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -143,6 +187,10 @@
 			dependencies = (
 			);
 			name = GetFlix;
+			packageProductDependencies = (
+				04AF94E42C515BD6008D8F3D /* SDWebImage */,
+				04AF94E62C515BD6008D8F3D /* SDWebImageMapKit */,
+			);
 			productName = GetFlix;
 			productReference = 04AF94AB2C515B23008D8F3D /* GetFlix.app */;
 			productType = "com.apple.product-type.application";
@@ -215,6 +263,9 @@
 				Base,
 			);
 			mainGroup = 04AF94A22C515B23008D8F3D;
+			packageReferences = (
+				04AF94E32C515BD6008D8F3D /* XCRemoteSwiftPackageReference "SDWebImage" */,
+			);
 			productRefGroup = 04AF94AC2C515B23008D8F3D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -607,6 +658,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		04AF94E32C515BD6008D8F3D /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.19.5;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		04AF94E42C515BD6008D8F3D /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 04AF94E32C515BD6008D8F3D /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
+		04AF94E62C515BD6008D8F3D /* SDWebImageMapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 04AF94E32C515BD6008D8F3D /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImageMapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 04AF94A32C515B23008D8F3D /* Project object */;
 }
