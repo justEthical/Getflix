@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--MainVC.swift-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="GetFlix" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="MainVC.swift" id="BYZ-38-t0r" customClass="MainVC" customModule="GetFlix" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -81,7 +81,7 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.9496139884" green="0.65416812899999999" blue="0.23120072480000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </view>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="8ZV-6c-uda">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="8ZV-6c-uda">
                                 <rect key="frame" x="0.0" y="126" width="393" height="623"/>
                                 <color key="backgroundColor" systemColor="systemOrangeColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="s8Y-0O-6Pv">
@@ -113,19 +113,22 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="8ZV-6c-uda" secondAttribute="trailing" id="QCM-Aa-1om"/>
                             <constraint firstItem="8ZV-6c-uda" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="aDq-2g-Yb4"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="5iM-qa-VYy" secondAttribute="bottom" id="ccQ-R0-9nM"/>
-                            <constraint firstItem="kGq-qp-4I8" firstAttribute="top" secondItem="8ZV-6c-uda" secondAttribute="bottom" id="iQx-Dg-ag4"/>
-                            <constraint firstItem="8ZV-6c-uda" firstAttribute="top" secondItem="KUM-aH-loF" secondAttribute="bottom" id="lmf-rc-n1Y"/>
+                            <constraint firstItem="kGq-qp-4I8" firstAttribute="top" secondItem="8ZV-6c-uda" secondAttribute="bottom" constant="-1" id="iQx-Dg-ag4"/>
+                            <constraint firstItem="8ZV-6c-uda" firstAttribute="top" secondItem="KUM-aH-loF" secondAttribute="bottom" constant="-1" id="lmf-rc-n1Y"/>
                             <constraint firstItem="kGq-qp-4I8" firstAttribute="top" secondItem="5iM-qa-VYy" secondAttribute="top" id="mRy-1M-Arq"/>
                             <constraint firstAttribute="trailing" secondItem="5iM-qa-VYy" secondAttribute="trailing" id="qJC-fh-KcE"/>
                             <constraint firstItem="KUM-aH-loF" firstAttribute="leading" secondItem="8ZV-6c-uda" secondAttribute="leading" id="r7k-Uc-2NT"/>
-                            <constraint firstItem="8ZV-6c-uda" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="68" id="ubi-EV-fZd"/>
+                            <constraint firstItem="8ZV-6c-uda" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="67" id="ubi-EV-fZd"/>
                             <constraint firstItem="kGq-qp-4I8" firstAttribute="trailing" secondItem="KUM-aH-loF" secondAttribute="trailing" id="wt9-4U-eQH"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="movieList" destination="8ZV-6c-uda" id="GIa-UI-3nI"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-309.16030534351142" y="-335.21126760563379"/>
+            <point key="canvasLocation" x="-527" y="-347"/>
         </scene>
     </scenes>
     <resources>

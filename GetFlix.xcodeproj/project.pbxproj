@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04817C262C51662100A3E318 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04817C252C51662100A3E318 /* MainVC.swift */; };
+		04817C282C51678600A3E318 /* MovieModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04817C272C51678600A3E318 /* MovieModel.swift */; };
+		04817C2A2C5167F400A3E318 /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04817C292C5167F400A3E318 /* ApiService.swift */; };
 		04AF94AF2C515B23008D8F3D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AF94AE2C515B23008D8F3D /* AppDelegate.swift */; };
 		04AF94B12C515B23008D8F3D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AF94B02C515B23008D8F3D /* SceneDelegate.swift */; };
 		04AF94B32C515B23008D8F3D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AF94B22C515B23008D8F3D /* ViewController.swift */; };
@@ -38,6 +41,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		04817C252C51662100A3E318 /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
+		04817C272C51678600A3E318 /* MovieModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieModel.swift; sourceTree = "<group>"; };
+		04817C292C5167F400A3E318 /* ApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiService.swift; sourceTree = "<group>"; };
 		04AF94AB2C515B23008D8F3D /* GetFlix.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GetFlix.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04AF94AE2C515B23008D8F3D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04AF94B02C515B23008D8F3D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -80,9 +86,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		04817C242C51660200A3E318 /* kk */ = {
+			isa = PBXGroup;
+			children = (
+				04817C252C51662100A3E318 /* MainVC.swift */,
+			);
+			path = kk;
+			sourceTree = "<group>";
+		};
 		04AF94A22C515B23008D8F3D = {
 			isa = PBXGroup;
 			children = (
+				04817C242C51660200A3E318 /* kk */,
 				04AF94E22C515B8B008D8F3D /* Cell */,
 				04AF94E12C515B7E008D8F3D /* Network */,
 				04AF94E02C515B74008D8F3D /* View */,
@@ -137,6 +152,7 @@
 		04AF94DE2C515B4A008D8F3D /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				04817C272C51678600A3E318 /* MovieModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -160,6 +176,7 @@
 		04AF94E12C515B7E008D8F3D /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				04817C292C5167F400A3E318 /* ApiService.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -310,6 +327,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				04AF94B32C515B23008D8F3D /* ViewController.swift in Sources */,
+				04817C262C51662100A3E318 /* MainVC.swift in Sources */,
+				04817C2A2C5167F400A3E318 /* ApiService.swift in Sources */,
+				04817C282C51678600A3E318 /* MovieModel.swift in Sources */,
 				04AF94AF2C515B23008D8F3D /* AppDelegate.swift in Sources */,
 				04AF94B12C515B23008D8F3D /* SceneDelegate.swift in Sources */,
 			);
