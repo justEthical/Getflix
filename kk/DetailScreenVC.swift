@@ -19,11 +19,13 @@ class DetailScreenVC: UIViewController{
     
     @IBOutlet weak var movieDescription: UILabel!
     
+    @IBOutlet weak var genere: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         imagePosterBG.sd_setImage(with: URL(string: (movie?.posterPath)!))
         movieTitle.text = movie?.title
         releaseDate.text = movie?.releaseDate
         movieDescription.text = movie?.overview
+        genere.text = ( movie?.genres![0]) ?? ""
     }
 }

@@ -172,8 +172,22 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="crown.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Uul-Sj-jST">
+                                        <rect key="frame" x="8" y="73.666666666666671" width="30" height="28"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="Svb-R4-EhC"/>
+                                            <constraint firstAttribute="width" constant="30" id="j0l-VX-TYM"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Vy-sc-Gab">
+                                        <rect key="frame" x="46" y="82.666666666666629" width="42" height="20.333333333333329"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a6f-lU-RwL">
-                                        <rect key="frame" x="8" y="79" width="325" height="20.333333333333329"/>
+                                        <rect key="frame" x="8" y="111" width="325" height="20.333333333333343"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -181,13 +195,17 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.42228910938793462" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
+                                    <constraint firstItem="a6f-lU-RwL" firstAttribute="top" secondItem="3Vy-sc-Gab" secondAttribute="bottom" constant="8" id="1Jj-7J-Flp"/>
                                     <constraint firstItem="C0X-jG-XbV" firstAttribute="leading" secondItem="FP4-iD-iMH" secondAttribute="leading" constant="8" id="Frm-Ln-B1e"/>
+                                    <constraint firstItem="Uul-Sj-jST" firstAttribute="top" secondItem="C0X-jG-XbV" secondAttribute="bottom" constant="10" id="MrW-ij-vdg"/>
                                     <constraint firstItem="CJM-ho-rAw" firstAttribute="top" secondItem="FP4-iD-iMH" secondAttribute="top" constant="8" id="PdB-Bm-wit"/>
                                     <constraint firstItem="a6f-lU-RwL" firstAttribute="leading" secondItem="FP4-iD-iMH" secondAttribute="leading" constant="8" id="UcS-41-x7j"/>
-                                    <constraint firstItem="a6f-lU-RwL" firstAttribute="top" secondItem="C0X-jG-XbV" secondAttribute="bottom" constant="16" id="WYX-AW-Er3"/>
+                                    <constraint firstItem="a6f-lU-RwL" firstAttribute="top" secondItem="Uul-Sj-jST" secondAttribute="bottom" constant="8" id="WYX-AW-Er3"/>
+                                    <constraint firstItem="3Vy-sc-Gab" firstAttribute="leading" secondItem="Uul-Sj-jST" secondAttribute="trailing" constant="8" id="gLL-Id-6Jt"/>
                                     <constraint firstItem="CJM-ho-rAw" firstAttribute="leading" secondItem="FP4-iD-iMH" secondAttribute="leading" constant="8" id="huw-1H-GZ8"/>
                                     <constraint firstItem="C0X-jG-XbV" firstAttribute="top" secondItem="CJM-ho-rAw" secondAttribute="bottom" constant="10" id="kfg-Dw-x1M"/>
                                     <constraint firstAttribute="height" constant="232" id="tSt-dJ-XdU"/>
+                                    <constraint firstItem="Uul-Sj-jST" firstAttribute="leading" secondItem="FP4-iD-iMH" secondAttribute="leading" constant="8" id="tTO-j7-mXy"/>
                                     <constraint firstAttribute="trailing" secondItem="a6f-lU-RwL" secondAttribute="trailing" id="zW8-ar-7CO"/>
                                 </constraints>
                             </view>
@@ -213,6 +231,7 @@
                         <nil key="title"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="genere" destination="3Vy-sc-Gab" id="sj7-r6-fro"/>
                         <outlet property="imagePosterBG" destination="Y6g-74-KNa" id="YHD-c9-Mpr"/>
                         <outlet property="movieDescription" destination="a6f-lU-RwL" id="o7Z-t9-nIx"/>
                         <outlet property="movieTitle" destination="CJM-ho-rAw" id="ocV-MV-SFh"/>
@@ -246,6 +265,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="crown.fill" catalog="system" width="128" height="92"/>
         <image name="play.rectangle" catalog="system" width="128" height="93"/>
         <image name="star" catalog="system" width="128" height="116"/>
         <systemColor name="systemOrangeColor">
