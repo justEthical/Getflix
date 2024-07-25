@@ -29,16 +29,15 @@ class ApiService{
         request.allHTTPHeaderFields = headers
 
         let session = URLSession.shared
-        delegate?.loader.startAnimating()
         let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
             DispatchQueue.main.async {
                 self.delegate?.loader.stopAnimating()
+                self.delegate?.stopRefresher()
             }
             if (error != nil) {
                 self.delegate?.onError(self, error: error!)
                 print(error as Any)
             } else {
-                let httpResponse = response as? HTTPURLResponse
                 self.parseJson(movieData: data!, currentTabIndex: currentTabIndex)
             }
         })
@@ -50,14 +49,18 @@ class ApiService{
         do {
                     // Decode the JSON data into an array of Category instances
                     let categories = try JSONDecoder().decode([MovieCategory].self, from: movieData)
-                    
+            self.delegate?.nowPlaying = []
+            self.delegate?.topRated = []
                     // Process the categories array
                     for category in categories {
                         print("Category: \(category.title)")
+                        
                         for movie in category.movies {
                             if(category.title == "Trending Movies"){
+                                
                                 self.delegate?.nowPlaying.append(movie)
                             }else if(category.title == "New Movies"){
+                                
                                 self.delegate?.topRated.append(movie)
                             }
                         }

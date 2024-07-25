@@ -41,6 +41,14 @@ class MainVC: UIViewController, ApiServiceDelegate{
             setupTapGestures()
             fetchMovies()
             searchBar.sizeToFit()
+            setupRefreshControl()
+        }
+    
+    private func setupRefreshControl() {
+        movieList.refreshControl = UIRefreshControl()
+            // Add the refresh control to the collection view
+        movieList.refreshControl?.addTarget(self, action: #selector(didPullToRefresh), for: .valueChanged)
+//            movieList.refreshControl = refreshControl
         }
 
         private func setupUI() {
@@ -78,6 +86,16 @@ class MainVC: UIViewController, ApiServiceDelegate{
             movieList.reloadData()
             updateBottomBarColor()
         }
+    
+    @objc private func didPullToRefresh(_ sender: Any){
+        self.movieList!.refreshControl?.beginRefreshing()
+        self.movieList!.refreshControl?.attributedTitle = NSAttributedString(string: "Pull to refresh")
+         apiService.getMovies(currentTabIndex: selectedTabIndex)
+    }
+    
+    func stopRefresher() {
+        self.movieList!.refreshControl?.endRefreshing()
+     }
 
         private func updateBottomBarColor() {
             if selectedTabIndex == 0 {
