@@ -124,6 +124,10 @@
                     </view>
                     <connections>
                         <outlet property="movieList" destination="8ZV-6c-uda" id="GIa-UI-3nI"/>
+                        <outlet property="nowPlayingIcon" destination="lO5-xa-LrX" id="5Bk-tN-m5c"/>
+                        <outlet property="nowPlayingLabel" destination="g1y-xc-8SF" id="zS6-6S-7va"/>
+                        <outlet property="topRatedIcon" destination="afH-zj-FCa" id="g8n-Rt-cut"/>
+                        <outlet property="topRatedLabel" destination="C7m-kE-g0d" id="FI0-tg-KLY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -135,7 +139,7 @@
         <image name="play.rectangle" catalog="system" width="128" height="93"/>
         <image name="star" catalog="system" width="128" height="116"/>
         <systemColor name="systemOrangeColor">
-            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

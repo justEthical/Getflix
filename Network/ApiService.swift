@@ -57,14 +57,15 @@ class ApiService{
                                 self.delegate?.topRated.append(movie)
                             }
                         }
-                        delegate?.moviesList = []
-                        if(currentTabIndex == 0){
-                            
-                            delegate?.moviesList.append(contentsOf: delegate!.nowPlaying)
-                        }else{
-                            delegate?.moviesList.append(contentsOf: delegate!.topRated)
-                        }
+                        
                         DispatchQueue.main.async{
+                            self.delegate?.moviesList = []
+                            if(currentTabIndex == 0){
+                                
+                                self.delegate?.moviesList.append(contentsOf: self.delegate!.nowPlaying)
+                            }else{
+                                self.delegate?.moviesList.append(contentsOf: self.delegate!.topRated)
+                            }
                             self.delegate?.movieList.reloadData()
                         }
                     }

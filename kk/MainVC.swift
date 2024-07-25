@@ -9,32 +9,83 @@ import UIKit
 import SDWebImage
 
 class MainVC: UIViewController, ApiServiceDelegate{
-    func onError(_ apiService: ApiService, error: Error) {
-        print(error.localizedDescription)
-    }
     
-    @IBOutlet weak var movieList: UICollectionView!
+        @IBOutlet weak var movieList: UICollectionView!
+        @IBOutlet weak var nowPlayingIcon: UIImageView!
+        @IBOutlet weak var nowPlayingLabel: UILabel!
+        @IBOutlet weak var topRatedIcon: UIImageView!
+        @IBOutlet weak var topRatedLabel: UILabel!
+
+        var apiService = ApiService()
+        var moviesList: [MovieModel] = []
+        var nowPlaying: [MovieModel] = []
+        var topRated: [MovieModel] = []
+        var selectedTabIndex: Int = 0
+
+        override func viewDidLoad() {
+            super.viewDidLoad()
+            setupUI()
+            setupCollectionView()
+            setupTapGestures()
+            fetchMovies()
+        }
+
+        private func setupUI() {
+            topRatedIcon.tintColor = .systemGray
+            topRatedLabel.textColor = .systemGray
+            nowPlayingIcon.isUserInteractionEnabled = true
+            topRatedIcon.isUserInteractionEnabled = true
+        }
+
+        private func setupCollectionView() {
+            CollectionViewCell.registerNib(movieList: movieList)
+            let layout = UICollectionViewFlowLayout()
+            layout.itemSize = CGSize(width: UIScreen.main.bounds.width, height: 120)
+            movieList.collectionViewLayout = layout
+            movieList.delegate = self
+            movieList.dataSource = self
+        }
+
+        private func setupTapGestures() {
+            let nowPlayingTapGesture = UITapGestureRecognizer(target: self, action: #selector(changeBottomBarColor))
+            nowPlayingIcon.addGestureRecognizer(nowPlayingTapGesture)
+
+            let topRatedTapGesture = UITapGestureRecognizer(target: self, action: #selector(changeBottomBarColor))
+            topRatedIcon.addGestureRecognizer(topRatedTapGesture)
+        }
+
+        private func fetchMovies() {
+            apiService.delegate = self
+            apiService.getMovies(currentTabIndex: selectedTabIndex)
+        }
+
+        @objc private func changeBottomBarColor() {
+            selectedTabIndex = (selectedTabIndex == 0) ? 1 : 0
+            moviesList = (selectedTabIndex == 0) ? nowPlaying : topRated
+            movieList.reloadData()
+            updateBottomBarColor()
+        }
+
+        private func updateBottomBarColor() {
+            if selectedTabIndex == 0 {
+                topRatedIcon.tintColor = .systemGray
+                topRatedLabel.textColor = .systemGray
+                nowPlayingIcon.tintColor = .black
+                nowPlayingLabel.textColor = .black
+            } else {
+                nowPlayingIcon.tintColor = .systemGray
+                nowPlayingLabel.textColor = .systemGray
+                topRatedIcon.tintColor = .black
+                topRatedLabel.textColor = .black
+            }
+        }
+
+        func onError(_ apiService: ApiService, error: Error) {
+            print("Error: \(error.localizedDescription)")
+        }
     
-    var apiService = ApiService()
-    
-    var moviesList : [MovieModel] = []
-    var nowPlaying : [MovieModel] = []
-    var topRated : [MovieModel] = []
-    
-    var selectedTabIndex : Int = 0
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        apiService.delegate = self
-        apiService.getMovies(currentTabIndex: selectedTabIndex)
-        CollectionViewCell.registerNib(movieList: movieList)
-        let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: UIScreen.main.bounds.width, height: 120)
-        movieList.collectionViewLayout = layout
-        movieList.delegate = self
-        movieList.dataSource = self
-    }
 }
+
 
 extension MainVC : UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
