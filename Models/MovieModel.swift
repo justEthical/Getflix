@@ -33,6 +33,6 @@ struct MovieModel: Codable {
 }
 
 struct MovieCategory : Codable{
-    let categoryTitle: String
+    let title: String
     let movies : [MovieModel]
 }

@@ -21,6 +21,8 @@
 		04AF94D22C515B25008D8F3D /* GetFlixUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AF94D12C515B25008D8F3D /* GetFlixUITestsLaunchTests.swift */; };
 		04AF94E52C515BD6008D8F3D /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 04AF94E42C515BD6008D8F3D /* SDWebImage */; };
 		04AF94E72C515BD6008D8F3D /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 04AF94E62C515BD6008D8F3D /* SDWebImageMapKit */; };
+		04F1B2F62C521EF100546ACF /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F1B2F42C521EF100546ACF /* CollectionViewCell.swift */; };
+		04F1B2F72C521EF100546ACF /* CollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04F1B2F52C521EF100546ACF /* CollectionViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +59,8 @@
 		04AF94CB2C515B25008D8F3D /* GetFlixUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GetFlixUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		04AF94CF2C515B25008D8F3D /* GetFlixUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFlixUITests.swift; sourceTree = "<group>"; };
 		04AF94D12C515B25008D8F3D /* GetFlixUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFlixUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		04F1B2F42C521EF100546ACF /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
+		04F1B2F52C521EF100546ACF /* CollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,6 +188,8 @@
 		04AF94E22C515B8B008D8F3D /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				04F1B2F42C521EF100546ACF /* CollectionViewCell.swift */,
+				04F1B2F52C521EF100546ACF /* CollectionViewCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -301,6 +307,7 @@
 			files = (
 				04AF94BB2C515B25008D8F3D /* LaunchScreen.storyboard in Resources */,
 				04AF94B82C515B25008D8F3D /* Assets.xcassets in Resources */,
+				04F1B2F72C521EF100546ACF /* CollectionViewCell.xib in Resources */,
 				04AF94B62C515B23008D8F3D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -329,6 +336,7 @@
 				04AF94B32C515B23008D8F3D /* ViewController.swift in Sources */,
 				04817C262C51662100A3E318 /* MainVC.swift in Sources */,
 				04817C2A2C5167F400A3E318 /* ApiService.swift in Sources */,
+				04F1B2F62C521EF100546ACF /* CollectionViewCell.swift in Sources */,
 				04817C282C51678600A3E318 /* MovieModel.swift in Sources */,
 				04AF94AF2C515B23008D8F3D /* AppDelegate.swift in Sources */,
 				04AF94B12C515B23008D8F3D /* SceneDelegate.swift in Sources */,
