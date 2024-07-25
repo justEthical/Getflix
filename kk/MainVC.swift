@@ -16,18 +16,31 @@ class MainVC: UIViewController, ApiServiceDelegate{
         @IBOutlet weak var topRatedIcon: UIImageView!
         @IBOutlet weak var topRatedLabel: UILabel!
 
-        var apiService = ApiService()
+    @IBOutlet weak var loader: UIActivityIndicatorView!
+    @IBOutlet weak var searchBar: UISearchBar!
+    var apiService = ApiService()
         var moviesList: [MovieModel] = []
         var nowPlaying: [MovieModel] = []
         var topRated: [MovieModel] = []
         var selectedTabIndex: Int = 0
+    
+    var tappedTile : MovieModel?
 
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.isNavigationBarHidden = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        navigationController?.isNavigationBarHidden = false
+    }
+    
         override func viewDidLoad() {
             super.viewDidLoad()
             setupUI()
             setupCollectionView()
             setupTapGestures()
             fetchMovies()
+            searchBar.sizeToFit()
         }
 
         private func setupUI() {
@@ -84,16 +97,25 @@ class MainVC: UIViewController, ApiServiceDelegate{
             print("Error: \(error.localizedDescription)")
         }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(segue.identifier == "getToDetailScreen"){
+            let detailScreenController = segue.destination as! DetailScreenVC
+            detailScreenController.movie = tappedTile
+            
+        }
+    }
+    
 }
 
 
 extension MainVC : UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-            // handle tap events
-            print("You selected cell #\(indexPath.item)!")
-        }
+        // handle tap events
+        print("You selected cell #\(indexPath.item)!")
+        tappedTile = moviesList[indexPath.row]
+        performSegue(withIdentifier: "getToDetailScreen", sender: self)
+    }
 }
-
 extension MainVC : UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return moviesList.count

@@ -23,6 +23,8 @@
 		04AF94E72C515BD6008D8F3D /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 04AF94E62C515BD6008D8F3D /* SDWebImageMapKit */; };
 		04F1B2F62C521EF100546ACF /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F1B2F42C521EF100546ACF /* CollectionViewCell.swift */; };
 		04F1B2F72C521EF100546ACF /* CollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04F1B2F52C521EF100546ACF /* CollectionViewCell.xib */; };
+		04F1B2FA2C52375E00546ACF /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 04F1B2F92C52375E00546ACF /* IQKeyboardManagerSwift */; };
+		04F1B2FC2C5248D300546ACF /* DetailScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F1B2FB2C5248D300546ACF /* DetailScreenVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +63,7 @@
 		04AF94D12C515B25008D8F3D /* GetFlixUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFlixUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		04F1B2F42C521EF100546ACF /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		04F1B2F52C521EF100546ACF /* CollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionViewCell.xib; sourceTree = "<group>"; };
+		04F1B2FB2C5248D300546ACF /* DetailScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailScreenVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +73,7 @@
 			files = (
 				04AF94E72C515BD6008D8F3D /* SDWebImageMapKit in Frameworks */,
 				04AF94E52C515BD6008D8F3D /* SDWebImage in Frameworks */,
+				04F1B2FA2C52375E00546ACF /* IQKeyboardManagerSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -94,6 +98,7 @@
 			isa = PBXGroup;
 			children = (
 				04817C252C51662100A3E318 /* MainVC.swift */,
+				04F1B2FB2C5248D300546ACF /* DetailScreenVC.swift */,
 			);
 			path = kk;
 			sourceTree = "<group>";
@@ -213,6 +218,7 @@
 			packageProductDependencies = (
 				04AF94E42C515BD6008D8F3D /* SDWebImage */,
 				04AF94E62C515BD6008D8F3D /* SDWebImageMapKit */,
+				04F1B2F92C52375E00546ACF /* IQKeyboardManagerSwift */,
 			);
 			productName = GetFlix;
 			productReference = 04AF94AB2C515B23008D8F3D /* GetFlix.app */;
@@ -288,6 +294,7 @@
 			mainGroup = 04AF94A22C515B23008D8F3D;
 			packageReferences = (
 				04AF94E32C515BD6008D8F3D /* XCRemoteSwiftPackageReference "SDWebImage" */,
+				04F1B2F82C52375E00546ACF /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
 			);
 			productRefGroup = 04AF94AC2C515B23008D8F3D /* Products */;
 			projectDirPath = "";
@@ -333,6 +340,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04F1B2FC2C5248D300546ACF /* DetailScreenVC.swift in Sources */,
 				04AF94B32C515B23008D8F3D /* ViewController.swift in Sources */,
 				04817C262C51662100A3E318 /* MainVC.swift in Sources */,
 				04817C2A2C5167F400A3E318 /* ApiService.swift in Sources */,
@@ -696,6 +704,14 @@
 				minimumVersion = 5.19.5;
 			};
 		};
+		04F1B2F82C52375E00546ACF /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.1.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -708,6 +724,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 04AF94E32C515BD6008D8F3D /* XCRemoteSwiftPackageReference "SDWebImage" */;
 			productName = SDWebImageMapKit;
+		};
+		04F1B2F92C52375E00546ACF /* IQKeyboardManagerSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 04F1B2F82C52375E00546ACF /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
+			productName = IQKeyboardManagerSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

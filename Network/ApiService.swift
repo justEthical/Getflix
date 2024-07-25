@@ -29,7 +29,11 @@ class ApiService{
         request.allHTTPHeaderFields = headers
 
         let session = URLSession.shared
+        delegate?.loader.startAnimating()
         let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
+            DispatchQueue.main.async {
+                self.delegate?.loader.stopAnimating()
+            }
             if (error != nil) {
                 self.delegate?.onError(self, error: error!)
                 print(error as Any)
