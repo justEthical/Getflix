@@ -25,6 +25,7 @@ class MainVC: UIViewController, ApiServiceDelegate{
         var selectedTabIndex: Int = 0
     
     var tappedTile : MovieModel?
+    var filteredItems = [MovieModel]()
 
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.isNavigationBarHidden = true
@@ -42,6 +43,13 @@ class MainVC: UIViewController, ApiServiceDelegate{
             fetchMovies()
             searchBar.sizeToFit()
             setupRefreshControl()
+            searchBar.placeholder = "Search"
+                    searchBar.delegate = self
+            searchBar.showsCancelButton = true
+            if let cancelButton = searchBar.value(forKey: "cancelButton") as? UIButton {
+                        cancelButton.setTitleColor(UIColor.black, for: .normal) // Text color
+                    }
+            searchBar.searchTextField.backgroundColor = .white
         }
     
     private func setupRefreshControl() {
@@ -134,6 +142,7 @@ extension MainVC : UICollectionViewDelegate{
         performSegue(withIdentifier: "getToDetailScreen", sender: self)
     }
 }
+
 extension MainVC : UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return moviesList.count
@@ -154,6 +163,41 @@ extension MainVC : UICollectionViewDataSource{
 extension MainVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: UIScreen.main.bounds.width, height: 120)
+    }
+}
+
+extension MainVC : UISearchBarDelegate{
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+            // Called when the user changes the text in the search bar
+            filterContentForSearchText(searchText)
+        }
+        
+        func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+            // Called when the search button is clicked
+            searchBar.resignFirstResponder() // Dismiss the keyboard
+            filterContentForSearchText(searchBar.text ?? "")
+        }
+        
+        func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+            // Called when the cancel button is clicked
+            searchBar.text = ""
+            searchBar.resignFirstResponder()
+            moviesList = (selectedTabIndex == 0 ? nowPlaying : topRated )
+            movieList.reloadData()
+        }
+    
+    func filterContentForSearchText(_ searchText: String) {
+        if(searchText == ""){
+            moviesList = (selectedTabIndex == 0 ? nowPlaying : topRated )
+        }else{
+            moviesList = (selectedTabIndex == 0 ? nowPlaying : topRated ).filter { item in
+                
+                return item.title!.lowercased().contains(searchText.lowercased())
+            }
+        }
+        
+        // Reload your table view or collection view
+        movieList.reloadData()
     }
 }
 
