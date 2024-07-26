@@ -7,6 +7,7 @@
 
 import UIKit
 import SDWebImage
+import SwipeCellKit
 
 class MainVC: UIViewController, ApiServiceDelegate{
     
@@ -17,7 +18,7 @@ class MainVC: UIViewController, ApiServiceDelegate{
         @IBOutlet weak var topRatedLabel: UILabel!
 
     @IBOutlet weak var loader: UIActivityIndicatorView!
-    @IBOutlet weak var searchBar: UISearchBar!
+    var searchBar: UISearchBar!
     var apiService = ApiService()
         var moviesList: [MovieModel] = []
         var nowPlaying: [MovieModel] = []
@@ -27,13 +28,13 @@ class MainVC: UIViewController, ApiServiceDelegate{
     var tappedTile : MovieModel?
     var filteredItems = [MovieModel]()
 
-    override func viewWillAppear(_ animated: Bool) {
-        navigationController?.isNavigationBarHidden = true
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        navigationController?.isNavigationBarHidden = false
-    }
+//    override func viewWillAppear(_ animated: Bool) {
+//        navigationController?.isNavigationBarHidden = true
+//    }
+//    
+//    override func viewWillDisappear(_ animated: Bool) {
+//        navigationController?.isNavigationBarHidden = false
+//    }
     
         override func viewDidLoad() {
             super.viewDidLoad()
@@ -41,16 +42,23 @@ class MainVC: UIViewController, ApiServiceDelegate{
             setupCollectionView()
             setupTapGestures()
             fetchMovies()
-            searchBar.sizeToFit()
+            setupSearchBar()
             setupRefreshControl()
-            searchBar.placeholder = "Search"
-                    searchBar.delegate = self
-            searchBar.showsCancelButton = true
-            if let cancelButton = searchBar.value(forKey: "cancelButton") as? UIButton {
-                        cancelButton.setTitleColor(UIColor.black, for: .normal) // Text color
-                    }
-            searchBar.searchTextField.backgroundColor = .white
+            
         }
+    
+    private func setupSearchBar(){
+        searchBar = UISearchBar()
+        searchBar.sizeToFit()
+        navigationItem.titleView = searchBar
+        searchBar.placeholder = "Search"
+                searchBar.delegate = self
+        searchBar.showsCancelButton = true
+        if let cancelButton = searchBar.value(forKey: "cancelButton") as? UIButton {
+                    cancelButton.setTitleColor(UIColor.black, for: .normal) // Text color
+                }
+        searchBar.searchTextField.backgroundColor = .white
+    }
     
     private func setupRefreshControl() {
         movieList.refreshControl = UIRefreshControl()
@@ -151,11 +159,10 @@ extension MainVC : UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let mov = moviesList[indexPath.row]
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CollectionViewCell.cellIdentifier, for: indexPath) as! CollectionViewCell
-        
+        cell.movieList = moviesList
         cell.moviePoster.sd_setImage(with: URL(string: mov.posterPath!))
         cell.movieTitle.text = mov.title
         cell.movieDescription.text = mov.overview
-        
         return cell
     }
 }
@@ -165,6 +172,7 @@ extension MainVC: UICollectionViewDelegateFlowLayout {
         return CGSize(width: UIScreen.main.bounds.width, height: 120)
     }
 }
+
 
 extension MainVC : UISearchBarDelegate{
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {

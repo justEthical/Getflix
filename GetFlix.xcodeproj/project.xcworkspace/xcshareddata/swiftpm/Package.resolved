@@ -17,6 +17,15 @@
         "revision" : "86e9185ef41c4238a93ad8efe61ddeb701e80bbf",
         "version" : "5.19.5"
       }
+    },
+    {
+      "identity" : "swipecellkit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/SwipeCellKit/SwipeCellKit",
+      "state" : {
+        "revision" : "7219cad3098637176ace311510d11467dbfb9bb0",
+        "version" : "2.7.1"
+      }
     }
   ],
   "version" : 2
