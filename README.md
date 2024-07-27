@@ -23,3 +23,18 @@ Getflix is an iOS application that allows users to search and view details of mo
    ```bash
    git clone https://github.com/yourusername/getflix.git
    cd getflix
+
+2. **Requirements:**
+   * iOS 13.0+
+   * Xcode 12.0+
+   * Swift 5.0+
+
+3. **Libraries used:**
+   * [SDWebImage](https://github.com/SDWebImage/SDWebImage): A powerful library for asynchronous image downloading and caching.
+   * [IQKeyboardManager](https://github.com/hackiftekhar/IQKeyboardManager): A library that makes managing the keyboard on iOS easy, without needing to write code.
+
+## License
+This project is licensed under the MIT License. See the LICENSE file for details.
+
+## Contributing
+Contributions are welcome! Please open an issue or submit a pull request with any improvements or new features.
