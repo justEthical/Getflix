@@ -11,11 +11,11 @@ import SwipeCellKit
 
 class MainVC: UIViewController, ApiServiceDelegate{
     
-        @IBOutlet weak var movieList: UICollectionView!
-        @IBOutlet weak var nowPlayingIcon: UIImageView!
-        @IBOutlet weak var nowPlayingLabel: UILabel!
-        @IBOutlet weak var topRatedIcon: UIImageView!
-        @IBOutlet weak var topRatedLabel: UILabel!
+    @IBOutlet weak var movieList: UICollectionView!
+    @IBOutlet weak var nowPlayingIcon: UIImageView!
+    @IBOutlet weak var nowPlayingLabel: UILabel!
+    @IBOutlet weak var topRatedIcon: UIImageView!
+    @IBOutlet weak var topRatedLabel: UILabel!
 
     @IBOutlet weak var loader: UIActivityIndicatorView!
     var searchBar: UISearchBar!
@@ -27,16 +27,8 @@ class MainVC: UIViewController, ApiServiceDelegate{
     
     var tappedTile : MovieModel?
     var filteredItems = [MovieModel]()
-
-//    override func viewWillAppear(_ animated: Bool) {
-//        navigationController?.isNavigationBarHidden = true
-//    }
-//    
-//    override func viewWillDisappear(_ animated: Bool) {
-//        navigationController?.isNavigationBarHidden = false
-//    }
     
-        override func viewDidLoad() {
+    override func viewDidLoad() {
             super.viewDidLoad()
             setupUI()
             setupCollectionView()
@@ -67,14 +59,14 @@ class MainVC: UIViewController, ApiServiceDelegate{
 //            movieList.refreshControl = refreshControl
         }
 
-        private func setupUI() {
+    private func setupUI() {
             topRatedIcon.tintColor = .systemGray
             topRatedLabel.textColor = .systemGray
             nowPlayingIcon.isUserInteractionEnabled = true
             topRatedIcon.isUserInteractionEnabled = true
         }
 
-        private func setupCollectionView() {
+    private func setupCollectionView() {
             CollectionViewCell.registerNib(movieList: movieList)
             let layout = UICollectionViewFlowLayout()
             layout.itemSize = CGSize(width: UIScreen.main.bounds.width, height: 120)
@@ -141,6 +133,38 @@ class MainVC: UIViewController, ApiServiceDelegate{
     
 }
 
+extension MainVC : SwipeCollectionViewCellDelegate{
+    func collectionView(_ collectionView: UICollectionView, editActionsForItemAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
+        guard orientation == .right else { return nil }
+
+        let deleteAction = SwipeAction(style: .destructive, title: "Delete") { action, indexPath in
+            
+            // handle action by updating model with deletion
+            self.moviesList.remove(at: indexPath.row)
+            
+            // Update the collection view
+            action.fulfill(with: .delete)
+            self.movieList.reloadData()
+            
+        }
+
+        // customize the action appearance
+        deleteAction.image = UIImage(named: "delete")
+
+        return [deleteAction]
+    }
+    
+    
+    func collectionView(_ collectionView: UICollectionView, editActionsOptionsForItemAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> SwipeOptions {
+        var options = SwipeOptions()
+        options.expansionStyle = .destructive
+//        options.expansionStyle = .destructive
+//        options.transitionStyle = .border
+        return options
+    }
+}
+
+//MARK: - list item on tap
 
 extension MainVC : UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -150,6 +174,8 @@ extension MainVC : UICollectionViewDelegate{
         performSegue(withIdentifier: "getToDetailScreen", sender: self)
     }
 }
+
+//MARK: - List length and list item UI
 
 extension MainVC : UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -163,6 +189,7 @@ extension MainVC : UICollectionViewDataSource{
         cell.moviePoster.sd_setImage(with: URL(string: mov.posterPath!))
         cell.movieTitle.text = mov.title
         cell.movieDescription.text = mov.overview
+        cell.delegate = self
         return cell
     }
 }
@@ -173,6 +200,7 @@ extension MainVC: UICollectionViewDelegateFlowLayout {
     }
 }
 
+//MARK: - Search bar onchange, search and filter functionality
 
 extension MainVC : UISearchBarDelegate{
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {

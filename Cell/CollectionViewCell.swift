@@ -8,7 +8,7 @@
 import UIKit
 import SwipeCellKit
 
-class CollectionViewCell: UICollectionViewCell{
+class CollectionViewCell: SwipeCollectionViewCell {
 
     @IBOutlet weak var moviePoster: UIImageView!
     @IBOutlet weak var movieTitle: UILabel!
